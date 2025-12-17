@@ -17,14 +17,14 @@ function love.load()
     local sfxPath = assetsPath .. "Sfx/"
     local imgPath = assetsPath .. "Images/"
     local modulePath = assetsPath .. "Modules/"
+    local ClassesPath = modulePath .. "Classes/"
+    local GuiPath = modulePath .. "Gui/"
 
+    GuiController = require(GuiPath .. "GuiController")
+    Instance = require(ClassesPath .. "InstanceClass")
+    Button = require(ClassesPath .. "ButtonClass") 
 
-    -- Due to how require works it is not possible to pass the variable {modulePath} because it expects the name of the module, not path.
-    GuiController = require "Assets/Modules/GuiController"
-    Button = require "Assets/Modules/ButtonClass"
-    Instance = require "Assets/Modules/InstanceClass"
-
-
+    
     --love.window.setMode(1940,1080)
 
     screenHeight = love.graphics.getHeight()

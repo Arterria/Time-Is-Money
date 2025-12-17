@@ -1,8 +1,8 @@
 
 
-local Textbox = require "Assets.Modules.TextboxClass"
-local Textlabel = require "Assets.Modules.TextlabelClass"
-local Button = require "Assets.Modules.ButtonClass"
+local Textbox = require "Assets.Modules.Classes.TextboxClass"
+local Textlabel = require "Assets.Modules.Classes.TextlabelClass"
+local Button = require "Assets.Modules.Classes.ButtonClass"
 
 local Instance = {}
 Instance.__index = Instance
