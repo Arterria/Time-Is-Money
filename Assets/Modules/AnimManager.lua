@@ -1,0 +1,8 @@
+
+AnimManager = {}
+
+
+
+
+
+return AnimManager
