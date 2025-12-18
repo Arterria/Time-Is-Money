@@ -3,13 +3,13 @@
     ABSTRACT BUTTON CLASS
 ]]
 
-Button = {}  -- Class definition.
+button = {}  -- Class definition.
 buttonList = {} -- Establishes a list for instance storing and easy updating.
-Button.__index = Button  -- Enables inheritance.
+button.__index = button  -- Enables inheritance.
 
 local globalCooldown = .1 -- Global cooldown variable. Basically the amount of time (in seconds) all buttons have to wait.
 
-function Button.new(instance)
+function button.new(instance)
     --[[
         Textlabel constructor.
     ]]
@@ -27,22 +27,22 @@ function Button.new(instance)
     instance.text = "text"
     instance.font = fontNormal
     instance.textColor = colorTheme.textColor
-    for k,v in pairs(Button) do instance[k] = v end -- Assigns key value pairs for all the functions in Textlabel onto Instance.
+    for k,v in pairs(button) do instance[k] = v end -- Assigns key value pairs for all the functions in Textlabel onto Instance.
 
     table.insert(buttonList,instance)
 
     return instance
 end
 
-function Button:getSize()
+function button:getSize()
     return self.width,self.height
 end
 
-function Button:getPosition()
+function button:getPosition()
     return self.x+self.anchor.x,self.y+self.anchor.y
 end
 
-function Button:setPos(X,Y)
+function button:setPos(X,Y)
     if type(X) == "table" then
         self.x = X["x"]
         self.y = X["y"]
@@ -52,17 +52,17 @@ function Button:setPos(X,Y)
     end
 end
 
-function Button:setSize(Width,Height)
-    if type(Width) == "table" then
-        self.width = Width["width"] 
-        self.height = Width["height"] 
+function button:setSize(width,jeight)
+    if type(width) == "table" then
+        self.width = width["width"] 
+        self.height = width["height"] 
     else
-        self.width = Width 
-        self.height = Height
+        self.width = width 
+        self.height = height
     end
 end
 
-function Button:mouseHover(x,y)
+function button:mouseHover(x,y)
     --[[
         Checks whether or not the given X,Y coordinates are within the confines
         of the button instance. Used to check if the mouse is hovering over the button. 
@@ -78,7 +78,7 @@ function Button:mouseHover(x,y)
     return false
 end
 
-function Button:click(x,y) -- Abstract function, intended to be overwritten.
+function button:click(x,y) -- Abstract function, intended to be overwritten.
     if not self.active and self:mouseHover(x,y) then
         self.active = true
         self.triggerTime = love.timer.getTime() + globalCooldown
@@ -88,11 +88,11 @@ function Button:click(x,y) -- Abstract function, intended to be overwritten.
             love.audio.stop(self.sfx)
             love.audio.play(self.sfx)
         end
-        print("Button clicked!")
+        print("button clicked!")
     end
 end
 
-function Button.update()
+function button.update()
     --[[
         Iterates through all created button instances and updates all relevant information.
         Is in charge of cooldown and checking wheter the cursor is over the button or not.
@@ -108,7 +108,7 @@ function Button.update()
     end
 end
 
-function Button:draw() 
+function button:draw() 
     --[[
         Draws the button. Needs work because it's very poorly written and could use some beautification.
     ]]
@@ -125,8 +125,8 @@ function Button:draw()
     love.graphics.printf(self.text,self.x,self.y + (self.height - love.graphics.getFont():getHeight())/2,self.width,"center")
 end
 
-function Button.mousepressed(x, y, mouseButton, istouch, presses)
-    if mouseButton == 1 then
+function button.mousepressed(x, y, mousebutton, is_Touch, presses)
+    if mousebutton == 1 then
         for _, buttonObj in pairs(buttonList) do
             if buttonObj.hovering and buttonObj.enabled then buttonObj:click(x,y) end
         end
@@ -135,4 +135,4 @@ end
 
 
 
-return Button
+return button

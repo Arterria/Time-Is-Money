@@ -1,13 +1,12 @@
 
-local Textlabel = {}
-Textlabel.__index = Textlabel
+local textlabel = {}
+textlabel.__index = textlabel
 
 
 
--- Need to rename the things to Textlabel instead of Textlabel
-function Textlabel.new(instance)
+function textlabel.new(instance)
     --[[
-        Textlabel constructor.
+        textlabel constructor.
     ]]
     instance.class = "textlabel"
     instance.x = 0
@@ -19,33 +18,33 @@ function Textlabel.new(instance)
     instance.text = "text"
     instance.font = fontNormal
     instance.textColor = colorTheme.textColor
-    for k,v in pairs(Textlabel) do instance[k] = v end -- Assigns key value pairs for all the functions in Textlabel onto Instance.
+    for k,v in pairs(textlabel) do instance[k] = v end -- Assigns key value pairs for all the functions in textlabel onto Instance.
 
     
     return instance
 end
 
-function Textlabel:setPos(X,Y)
+function textlabel:setPos(x,y)
     if type(X) == "table" then
-        self.x = X["x"]
-        self.y = X["y"]
+        self.x = x["x"]
+        self.y = x["y"]
     else
         self.x = X
         self.y = Y
     end
 end
 
-function Textlabel:setSize(Width,Height)
+function textlabel:setSize(width,height)
     if type(Width) == "table" then
-        self.width = Width["width"] 
-        self.height = Width["height"] 
+        self.width = width["width"] 
+        self.height = width["height"] 
     else
-        self.width = Width 
-        self.height = Height
+        self.width = width 
+        self.height = height
     end
 end
 
-function Textlabel:draw()
+function textlabel:draw()
 
     local xPos = self.x + self.anchor.x
     local yPos = self.y + self.anchor.y 
@@ -55,9 +54,9 @@ function Textlabel:draw()
     love.graphics.printf(self.text,xPos,yPos + (self.height - love.graphics.getFont():getHeight())/2 ,self.limit,"center")
 end
 
-function Textlabel:update()
+function textlabel:update()
     
 end
 
 
-return Textlabel
+return textlabel
