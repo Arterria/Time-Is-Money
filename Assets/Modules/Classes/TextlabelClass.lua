@@ -1,14 +1,14 @@
 
-local textlabel = {}
-textlabel.__index = textlabel
+local Textlabel = {}
+Textlabel.__index = Textlabel
 
 
 
-function textlabel.new(instance)
+function Textlabel.new(instance)
     --[[
-        textlabel constructor.
+        Textlabel constructor.
     ]]
-    instance.class = "textlabel"
+    instance.class = "Textlabel"
     instance.x = 0
     instance.y = 0
     instance.width = 200
@@ -18,13 +18,13 @@ function textlabel.new(instance)
     instance.text = "text"
     instance.font = fontNormal
     instance.textColor = colorTheme.textColor
-    for k,v in pairs(textlabel) do instance[k] = v end -- Assigns key value pairs for all the functions in textlabel onto Instance.
+    for k,v in pairs(Textlabel) do instance[k] = v end -- Assigns key value pairs for all the functions in Textlabel onto Instance.
 
     
     return instance
 end
 
-function textlabel:setPos(x,y)
+function Textlabel:setPos(x,y)
     if type(X) == "table" then
         self.x = x["x"]
         self.y = x["y"]
@@ -34,7 +34,7 @@ function textlabel:setPos(x,y)
     end
 end
 
-function textlabel:setSize(width,height)
+function Textlabel:setSize(width,height)
     if type(Width) == "table" then
         self.width = width["width"] 
         self.height = width["height"] 
@@ -44,7 +44,7 @@ function textlabel:setSize(width,height)
     end
 end
 
-function textlabel:draw()
+function Textlabel:draw()
 
     local xPos = self.x + self.anchor.x
     local yPos = self.y + self.anchor.y 
@@ -54,9 +54,9 @@ function textlabel:draw()
     love.graphics.printf(self.text,xPos,yPos + (self.height - love.graphics.getFont():getHeight())/2 ,self.limit,"center")
 end
 
-function textlabel:update()
+function Textlabel:update()
     
 end
 
 
-return textlabel
+return Textlabel

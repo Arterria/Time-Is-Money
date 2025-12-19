@@ -4,13 +4,12 @@ Textbox.__index = Textbox
 
 
 
--- Need to rename the things to textbox instead of textBox
 function Textbox.new(instance)
     --[[
         Textbox constructor.
     ]]
 
-    instance.class = "textbox"
+    instance.class = "Textbox"
     instance.x = 0
     instance.y = 0
     instance.width = 200

@@ -20,9 +20,9 @@ function love.load()
     local classesPath = modulePath .. "Classes/"
     local guiPath = modulePath .. "Gui/"
 
-    guiController = require(guiPath .. "GuiController")
-    instance = require(classesPath .. "InstanceClass")
-    button = require(classesPath .. "ButtonClass") 
+    GuiController = require(guiPath .. "GuiController")
+    Instance = require(classesPath .. "InstanceClass")
+    Button = require(classesPath .. "ButtonClass") 
 
     
     --love.window.setMode(1940,1080)
@@ -67,7 +67,7 @@ function love.load()
     startButton.limit = 200
     startButton.textColor = colorTheme.titleColor
     startButton.click = function()
-        guiController.loadGUI("game")
+        GuiController.loadGUI("game")
     end
 
     ---
@@ -94,25 +94,25 @@ function love.load()
     local panel = {titleLabel,underTitleLabel,startButton}
     local gamePanel = {testLabel,timeLabel}
 
-    guiController.createGUI("title",panel)
-    guiController.createGUI("game",gamePanel)
-    guiController.loadGUI("title")
+    GuiController.createGUI("title",panel)
+    GuiController.createGUI("game",gamePanel)
+    GuiController.loadGUI("title")
 
 
 end
 
 function love.mousepressed(x, y, mouseButton, is_Touch, presses)
-    button.mousepressed(x,y,mouseButton,is_Touch,presses)
+    Button.mousepressed(x,y,mouseButton,is_Touch,presses)
 end
 
 
 function love.update()
-    guiController.updateAll()
+    GuiController.updateAll()
 end
 
 function love.draw() -- Needs to be replaced with other stuff. Probably a game handler. Something that can switch stuff around. Like from main menu to game.
     love.graphics.setColor(theme.backgroundColor)
     love.graphics.rectangle("fill", 0, 0, screenWidth, screenHeight)
-    guiController.drawAll()
+    GuiController.drawAll()
 end
 
