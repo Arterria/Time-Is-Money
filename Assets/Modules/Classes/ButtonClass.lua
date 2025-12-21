@@ -42,17 +42,17 @@ function Button:getPosition()
     return self.x+self.anchor.x,self.y+self.anchor.y
 end
 
-function Button:setPos(X,Y)
+function Button:setPos(x,y)
     if type(X) == "table" then
-        self.x = X["x"]
-        self.y = X["y"]
+        self.x = x["x"]
+        self.y = x["y"]
     else
-        self.x = X
-        self.y = Y
+        self.x = x
+        self.y = y
     end
 end
 
-function Button:setSize(width,jeight)
+function Button:setSize(width,height)
     if type(width) == "table" then
         self.width = width["width"] 
         self.height = width["height"] 

@@ -3,7 +3,6 @@ local Textlabel = {}
 Textlabel.__index = Textlabel
 
 
-
 function Textlabel.new(instance)
     --[[
         Textlabel constructor.
@@ -18,19 +17,19 @@ function Textlabel.new(instance)
     instance.text = "text"
     instance.font = fontNormal
     instance.textColor = colorTheme.textColor
+
     for k,v in pairs(Textlabel) do instance[k] = v end -- Assigns key value pairs for all the functions in Textlabel onto Instance.
 
-    
     return instance
 end
 
 function Textlabel:setPos(x,y)
-    if type(X) == "table" then
+    if type(x) == "table" then
         self.x = x["x"]
         self.y = x["y"]
     else
-        self.x = X
-        self.y = Y
+        self.x = x
+        self.y = y
     end
 end
 
@@ -45,7 +44,7 @@ function Textlabel:setSize(width,height)
 end
 
 function Textlabel:draw()
-
+    
     local xPos = self.x + self.anchor.x
     local yPos = self.y + self.anchor.y 
 
