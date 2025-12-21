@@ -24,23 +24,13 @@ function Textlabel.new(instance)
 end
 
 function Textlabel:setPos(x,y)
-    if type(x) == "table" then
-        self.x = x["x"]
-        self.y = x["y"]
-    else
-        self.x = x
-        self.y = y
-    end
+    self.x = x
+    self.y = y
 end
 
 function Textlabel:setSize(width,height)
-    if type(Width) == "table" then
-        self.width = width["width"] 
-        self.height = width["height"] 
-    else
-        self.width = width 
-        self.height = height
-    end
+    self.width = width
+    self.height = height
 end
 
 function Textlabel:draw()

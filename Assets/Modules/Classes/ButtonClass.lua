@@ -43,23 +43,13 @@ function Button:getPosition()
 end
 
 function Button:setPos(x,y)
-    if type(X) == "table" then
-        self.x = x["x"]
-        self.y = x["y"]
-    else
-        self.x = x
-        self.y = y
-    end
+    self.x = x
+    self.y = y
 end
 
 function Button:setSize(width,height)
-    if type(width) == "table" then
-        self.width = width["width"] 
-        self.height = width["height"] 
-    else
-        self.width = width 
-        self.height = height
-    end
+    self.width = width
+    self.height = height
 end
 
 function Button:mouseHover(x,y)
@@ -79,17 +69,7 @@ function Button:mouseHover(x,y)
 end
 
 function Button:click(x,y) -- Abstract function, intended to be overwritten.
-    if not self.active and self:mouseHover(x,y) then
-        self.active = true
-        self.triggerTime = love.timer.getTime() + globalCooldown
-        self.x = math.random(0,love.graphics.getWidth())
-        self.y = math.random(0,love.graphics.getHeight())
-        if self.sfx then
-            love.audio.stop(self.sfx)
-            love.audio.play(self.sfx)
-        end
-        print("Button clicked!")
-    end
+
 end
 
 function Button.update()
