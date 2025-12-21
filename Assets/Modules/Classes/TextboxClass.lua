@@ -2,7 +2,7 @@
 local Textbox = {}
 Textbox.__index = Textbox
 
-
+-- This object was probably made to serve as a text input. But was never finished.
 
 function Textbox.new(instance)
     --[[
